@@ -59,8 +59,10 @@ Server:
   ☐ Commands System.
   ✔ Handlers System. @done (19-02-07 11:15)
     Each handler will handle an aspect of the game/network.
-    ✔ ConnectionHandler. @done (19-02-07 11:45)
+    ✔ Connection handler. @done (19-02-07 11:45)
       It should handle the clients connections (HelloMessage) and versioning.
+    ☐ Login handler.
+    ☐ Registration handler.
   ✔ Setup Database. @done (19-02-17 18:07)
     Only work with migrations!
     ✔ Users. @done (19-02-17 18:07)
@@ -100,6 +102,8 @@ Client (Game):
           This way he can go fix his internet problem and come back.
           PopUp or Directly?
         ✔ Localize text. @done (19-02-16 20:20)
+      ☐ Login Screen.
+      ☐ Registration Screen.
   ✔ Handlers System. @done (19-02-07 11:38)
     Each Handler would handle an aspect of the game/network.
   Dialog/PopUp system:

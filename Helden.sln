@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helden.Common", "Helden.Com
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Helden.Common.Tests", "Helden.Common.Tests\Helden.Common.Tests.csproj", "{12FE17C1-8915-4B9D-9184-3E004B10A128}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HeldenServer.Database", "HeldenServer.Database\HeldenServer.Database.csproj", "{DD08024D-0301-4B3A-BF5A-3F115F49FF5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{12FE17C1-8915-4B9D-9184-3E004B10A128}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12FE17C1-8915-4B9D-9184-3E004B10A128}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12FE17C1-8915-4B9D-9184-3E004B10A128}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD08024D-0301-4B3A-BF5A-3F115F49FF5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD08024D-0301-4B3A-BF5A-3F115F49FF5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD08024D-0301-4B3A-BF5A-3F115F49FF5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD08024D-0301-4B3A-BF5A-3F115F49FF5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,5 @@
+{
+  "Database": {
+    "ConnectionString": "Server=localhost;Database=helden;Uid=root;Pwd=root;"
+  } 
+}

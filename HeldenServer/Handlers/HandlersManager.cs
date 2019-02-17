@@ -14,8 +14,14 @@ namespace HeldenServer.Handlers
 
         #endregion
 
+        #region Properties
+
+        public static int HandlersCount => Handlers.Count;
+
+        #endregion
+
         #region Public Methods
-        
+
         /// <summary>
         /// Should only be called once.
         /// </summary>

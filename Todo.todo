@@ -61,8 +61,9 @@ Server:
     Each handler will handle an aspect of the game/network.
     ✔ ConnectionHandler. @done (19-02-07 11:45)
       It should handle the clients connections (HelloMessage) and versioning.
-  ☐ Setup Database.
-    Maybe use Docker (MySQL)?
+  ✔ Setup Database. @done (19-02-17 18:07)
+    Only work with migrations!
+    ✔ Users. @done (19-02-17 18:07)
 
 Client (Game):
   ✔ Test some networking libraries. @done (19-02-05 21:37)

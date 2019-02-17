@@ -1,16 +1,25 @@
 ﻿using System;
+using System.IO;
+using System.Linq;
 using Helden.Common.Network.Protocol;
+using HeldenServer.Database;
 using HeldenServer.Handlers;
+using Microsoft.Extensions.Configuration;
 using Serilog;
-using Serilog.Events;
 using Serilog.Sinks.SystemConsole.Themes;
 
 namespace HeldenServer
 {
-    class Program
+    internal class Program
     {
 
-        static void Main(string[] args)
+        #region Properties
+
+        public static IConfigurationRoot Configuration { get; private set; }
+
+        #endregion
+
+        private static void Main(string[] args)
         {
             // Logger
             Log.Logger = new LoggerConfiguration()
@@ -19,12 +28,32 @@ namespace HeldenServer
                 .WriteTo.File("Logs/Log.txt", rollingInterval: RollingInterval.Day)
                 .CreateLogger();
 
-            // Messages & Handlers
+            // Configuration
+            Configuration = GetConfiguration();
+            Log.Information("Configuration loaded.");
+
+            // Messages
             MessagesManager.Initialize();
+            Log.Information($"{MessagesManager.MessagesCount} messages loaded.");
+
+            // Handlers
             HandlersManager.Initialize();
+            Log.Information($"{HandlersManager.HandlersCount} handlers loaded.");
+
+            // Start server
+            Log.Debug("Starting server...");
             ServerManager.Start();
 
             Console.ReadKey();
+        }
+
+        private static IConfigurationRoot GetConfiguration()
+        {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("configuration.json");
+
+            return builder.Build();
         }
 
     }

@@ -8,7 +8,7 @@ namespace HeldenServer.Handlers.Connection
     public class ConnectionHandler : IHandler
     {
 
-        private const string Version = "0.0.1";
+        private const string Version = "0.1";
 
         public void HandleClient(ClientManager clientManager)
         {

@@ -174,7 +174,7 @@ namespace Assets.Scripts.UI.Elements
                         _innerText.SetText($"{Value} / {MaxValue}");
                         break;
                     case ProgressBarTextVisibility.Percentage:
-                        _innerText.SetText($"{(Value / MaxValue) * 100}%");
+                        _innerText.SetText($"{(int)(Value / MaxValue * 100)}%");
                         break;
                 }
             }

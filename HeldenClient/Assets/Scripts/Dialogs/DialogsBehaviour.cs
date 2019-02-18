@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Dialogs
 {
-    public class DialogsBehaviour : SingletonBehaviour<DialogsBehaviour>
+    public class DialogsBehaviour : UndestroyableSingletonBehaviour<DialogsBehaviour>
     {
 
         #region Fields
@@ -16,15 +16,6 @@ namespace Assets.Scripts.Dialogs
         #region Properties
 
         public bool IsOpen => _currentDialog != null;
-
-        #endregion
-
-        #region Unity Methods
-
-        private void Awake()
-        {
-            DontDestroyOnLoad(this);
-        }
 
         #endregion
 

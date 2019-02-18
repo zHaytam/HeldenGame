@@ -1,21 +1,19 @@
 ﻿using System;
-using System.Collections;
 using Assets.Scripts.Handlers;
-using Helden.Common.Network;
 using Helden.Common.Network.Protocol;
 using Helden.Common.Network.Protocol.Dispatcher;
 using Helden.Common.Network.Protocol.Messages;
-using Helden.Common.Network.Protocol.Messages.Basic;
 using Telepathy;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Network
 {
     /// <summary>
     /// Handles a Telepathy client instance.
     /// </summary>
-    public class NetworkClient : SingletonBehaviour<NetworkClient>, IDispatcherSource
+    public class NetworkClient : UndestroyableSingletonBehaviour<NetworkClient>, IDispatcherSource
     {
 
         #region Fields
@@ -59,14 +57,13 @@ namespace Assets.Scripts
 
         #region Unity Methods
 
-        private void Awake()
+        protected override void OnAwake()
         {
             // update even if window isn't focused, otherwise we don't receive.
             Application.runInBackground = true;
 
             // Load messages
             MessagesManager.Initialize();
-            DontDestroyOnLoad(this);
 
             // Telepathy logs
             Telepathy.Logger.Log = Debug.Log;
@@ -152,6 +149,9 @@ namespace Assets.Scripts
         {
             HandlersManager.Clean();
             State = ConnectionState.Disconnected;
+
+            if (SceneManager.GetActiveScene().name != "ConnectionScene")
+                SceneManager.LoadScene("ConnectionScene");
         }
 
         private void OnStateChanged()

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 namespace Assets.Scripts.UI
@@ -11,7 +6,7 @@ namespace Assets.Scripts.UI
     /// <summary>
     /// Display an FPS counter for debugging.
     /// </summary>
-    public class FpsCounterUi : MonoBehaviour
+    public class FpsCounterUi : UndestroyableSingletonBehaviour<MonoBehaviour>
     {
 
         #region Fields
@@ -22,11 +17,6 @@ namespace Assets.Scripts.UI
         #endregion
 
         #region Unity Methods
-
-        private void Awake()
-        {
-            DontDestroyOnLoad(this);
-        }
 
         private void Update()
         {

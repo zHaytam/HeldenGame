@@ -12,7 +12,7 @@ namespace Assets.Scripts.I18n
     /// Handles loading/changing languages as well as getting
     /// texts/sentences based on the keys/count.
     /// </summary>
-    public class I18NManager : SingletonBehaviour<I18NManager>
+    public class I18NManager : UndestroyableSingletonBehaviour<I18NManager>
     {
 
         #region Fields
@@ -35,12 +35,9 @@ namespace Assets.Scripts.I18n
 
         #region Unity Methods
 
-        private void Awake()
+        protected override void OnAwake()
         {
-            // Since I18nManager is supposed to live "forever", it's okay to use a lambda
-            SceneManager.sceneLoaded += (scene, mode) => ReloadSentences(scene.name);
             CurrentLanguage = GetStartingLanguage();
-            DontDestroyOnLoad(this);
         }
 
         #endregion
@@ -54,6 +51,13 @@ namespace Assets.Scripts.I18n
 
             CurrentLanguage = language;
             ReloadSentences(SceneManager.GetActiveScene().name);
+        }
+
+        public IEnumerator ReloadSentences(string sceneName)
+        {
+            string filename = $"{sceneName}_{CurrentLanguage}.csv";
+            string streamingAssetsPath = Path.Combine(Application.streamingAssetsPath, "I18n", filename);
+            return LoadSentencesFromFile(streamingAssetsPath);
         }
 
         public string GetNormal(string key) => GetSentence(key)?.Normal ?? key;
@@ -99,7 +103,7 @@ namespace Assets.Scripts.I18n
                     return string.Format(sentence.Many, args);
             }
         }
-
+    
         #endregion
 
         #region Private Methods
@@ -115,13 +119,6 @@ namespace Assets.Scripts.I18n
             return I18NLanguage.English;
         }
 
-        private void ReloadSentences(string sceneName)
-        {
-            string filename = $"{sceneName}_{CurrentLanguage}.csv";
-            string streamingAssetsPath = Path.Combine(Application.streamingAssetsPath, "I18n", filename);
-            StartCoroutine(LoadSentencesFromFile(streamingAssetsPath));
-        }
-
         private IEnumerator LoadSentencesFromFile(string streamingAssetsPath)
         {
             // Read file depending on the platform
@@ -129,7 +126,11 @@ namespace Assets.Scripts.I18n
             var www = UnityWebRequest.Get(streamingAssetsPath);
             yield return www.SendWebRequest();
             if (www.isNetworkError || www.isHttpError)
-                throw new Exception($"Failed to get '{streamingAssetsPath}' using UnityWebRequest.");
+            {
+                Debug.LogWarning($"Failed to get '{streamingAssetsPath}' using UnityWebRequest.");
+                _currentSentences = null;
+                yield break;
+            }
 
             string content = www.downloadHandler.text;
 #else
@@ -145,7 +146,6 @@ namespace Assets.Scripts.I18n
             });
 
             SentencesReloaded?.Invoke();
-            Debug.Log("SentencesReloaded");
         }
 
         #endregion

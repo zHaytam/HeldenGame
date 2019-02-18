@@ -4,6 +4,7 @@ using Helden.Common.Network.Protocol.Dispatcher;
 using Helden.Common.Network.Protocol.Messages.Connection;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Screens
 {
@@ -25,7 +26,6 @@ namespace Assets.Scripts.Screens
 
         private void Awake()
         {
-            Debug.Log("ConnectionScreen.Awake");
             NetworkClient.Instance.StateChanged += NetworkClient_StateChanged;
             NetworkClient.Instance.Dispatcher.RegisterMessage<HelloMessage>(HandleHelloMessage, MessagePriority.High);
             NetworkClient.Instance.Dispatcher.RegisterMessage<WrongClientVersionMessage>(
@@ -40,8 +40,6 @@ namespace Assets.Scripts.Screens
 
         private void OnDisable()
         {
-            Debug.Log("ConnectionScreen.OnDisable");
-
             // Annoying error when we stop playing in the Editor
             if (NetworkClient.Instance == null)
                 return;
@@ -66,7 +64,7 @@ namespace Assets.Scripts.Screens
 
         #region Private Methods
 
-        private void CheckIfDisconnected()
+        private static void CheckIfDisconnected()
         {
             if (NetworkClient.Instance.State != ConnectionState.Disconnected)
                 return;
@@ -101,7 +99,7 @@ namespace Assets.Scripts.Screens
         private static void HandleWelcomeMessage(NetworkClient client, WelcomeMessage message)
         {
             NetworkClient.Instance.State = ConnectionState.FullyConnected;
-            // Todo: change scene
+            SceneManager.LoadScene("LoginScene");
         }
 
         #endregion

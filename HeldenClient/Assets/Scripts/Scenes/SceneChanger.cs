@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using Assets.Scripts.I18n;
 using Assets.Scripts.UI.Elements;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -35,8 +36,14 @@ namespace Assets.Scripts.Scenes
 
         private IEnumerator LoadScene(AvailableScene newScene)
         {
+            // Show panel
             _panel.SetActive(true);
             yield return new WaitForSeconds(1f);
+
+            // Load I18N sentences
+            yield return StartCoroutine(I18NManager.Instance.ReloadSentences($"{newScene}Scene"));
+
+            // Load scene (de-activated)
             var operation = SceneManager.LoadSceneAsync($"{newScene}Scene");
             operation.allowSceneActivation = false;
 
@@ -46,10 +53,11 @@ namespace Assets.Scripts.Scenes
                 yield return null;
             }
 
+            // hide panel and Activate scene
             _pb.Value = 1f;
             yield return new WaitForSeconds(1f);
-            operation.allowSceneActivation = true;
             _panel.SetActive(false);
+            operation.allowSceneActivation = true;
             CurrentScene = newScene;
         }
 

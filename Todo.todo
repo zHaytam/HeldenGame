@@ -10,14 +10,14 @@ Global bugs:
     Ended up setting connectionRetriesLeft to 0 when we receive DisconnectReason.WrongVersion
   ✔ When changing the scene back to ConnectionScene, all Singletons (DontDestroyOnLoad) are duplicated. @critical @done (19-02-18 10:38)
     Fixed in the editor, but in Android it still has the same problem.
-  ☐ In Android, I18NManager doesn't load the sentences. @critical
+  ✔ In Android, I18NManager doesn't load the sentences. @critical @done (19-02-18 19:38)
     Maybe it's because of the File.Exists?
-  ☐ I18NManager doesn't work if I don't put a Debug.log in the ReloadSentencesFromFile coroutine???? @critical
+  ✔ I18NManager doesn't work if I don't put a Debug.log in the ReloadSentencesFromFile coroutine???? @critical @done (19-02-18 19:38)
     Is it because of the coroutine?
     I'll fix this using a Scene Changer (which is a good idea for loading progress).
     A Scene Changer will fix the issue for other scenes but not the first one, I'll just add
     an "Entry" scene and use the Scene Changer to go to the ConnectionScene.
-  ☐ Somehow NetworkClient's script is null now... @critical
+  ✘ Somehow NetworkClient's script is null now... @critical @cancelled (19-02-18 19:28)
 
 Helden.Common:
   ✔ Messages system. @done (19-02-04 19:44)
@@ -142,6 +142,6 @@ Client (Game):
         ✔ Empty columns give error. @critical @done (19-02-16 12:08)
       ☐ Save/Load user language.
       ✘ Localized TextMeshProUGUI. @cancelled (19-02-16 11:52)
-    ☐ Scene Changer.
+    ✔ Scene Changer. @done (19-02-18 19:38)
       Scene changer should handle changing a scene and showing a progress.
       It should also load I18N sentences before activatig the scene.

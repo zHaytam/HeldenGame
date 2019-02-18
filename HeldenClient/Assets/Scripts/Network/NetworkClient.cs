@@ -8,7 +8,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Assets.Scripts.Network
+namespace Assets.Scripts
 {
     /// <summary>
     /// Handles a Telepathy client instance.

@@ -23,6 +23,21 @@ namespace Assets.Scripts.Scenes
 
         #endregion
 
+        #region Unity Methods
+
+        protected override void OnAwake()
+        {
+            base.OnAwake();
+
+            SceneManager.sceneLoaded += (scene, mode) =>
+            {
+                _panel.SetActive(false);
+                _pb.Value = 0;
+            };
+        }
+
+        #endregion
+
         #region Public Methods
 
         public void ChangeScene(AvailableScene newScene)
@@ -53,10 +68,9 @@ namespace Assets.Scripts.Scenes
                 yield return null;
             }
 
-            // hide panel and Activate scene
+            // Activate scene
             _pb.Value = 1f;
             yield return new WaitForSeconds(1f);
-            _panel.SetActive(false);
             operation.allowSceneActivation = true;
             CurrentScene = newScene;
         }

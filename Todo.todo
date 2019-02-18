@@ -105,6 +105,7 @@ Client (Game):
         is avaible (a.k.a ConnectionScene)..
         The NetworkClient shouldn't be the one handling this.
         ✔ When FullyConnected, switch to the next scene. @done (19-02-18 10:29)
+          ☐ Use SceneChanger.
         ☐ When the player has a wrong version, show a blocking popup.
         ✔ Ask the user if he wants to try & reconnect. @done (19-02-13 14:24)
           Instead of trying 3 times to reconnect and blocking the user,
@@ -145,3 +146,5 @@ Client (Game):
     ✔ Scene Changer. @done (19-02-18 19:38)
       Scene changer should handle changing a scene and showing a progress.
       It should also load I18N sentences before activatig the scene.
+      ✔ ProgressBar value stays at 100% @low @done (19-02-18 20:00)
+      ✔ Only hide the loading thing when the new scene is actually loaded. @done (19-02-18 20:00)

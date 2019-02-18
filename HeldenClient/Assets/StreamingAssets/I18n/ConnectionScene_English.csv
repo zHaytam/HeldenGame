@@ -2,4 +2,6 @@ Key,Normal,Zero,One,Many
 ErrorTitle,Error,,,
 RetryConnection,"Failed to connect to the server.
 Please touch the screen if you want to try again.",,,
-ConnectingState,Connecting...,,,
+ConnectingState,Connecting 1/2,,,
+ConnectedState,Connecting 2/2,,,
+FullyConnectedState,Connected !,,,

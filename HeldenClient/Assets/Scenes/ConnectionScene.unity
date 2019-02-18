@@ -156,8 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a4360b819bd67146a4940b76d3c17be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ip: something
-  _port: 0
+  _ip: 192.168.1.2
+  _port: 8654
   _connectionStateText: {fileID: 1811108236}
 --- !u!21 &360555244
 Material:
@@ -1545,7 +1545,7 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 3807821608211037476}
   m_PrefabAsset: {fileID: 0}
---- !u!21 &1687133697
+--- !u!21 &1784454739
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0

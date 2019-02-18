@@ -1,10 +1,10 @@
 ﻿using Assets.Scripts.Dialogs;
 using Assets.Scripts.I18n;
+using Assets.Scripts.Scenes;
 using Helden.Common.Network.Protocol.Dispatcher;
 using Helden.Common.Network.Protocol.Messages.Connection;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Assets.Scripts.Screens
 {
@@ -99,7 +99,7 @@ namespace Assets.Scripts.Screens
         private static void HandleWelcomeMessage(NetworkClient client, WelcomeMessage message)
         {
             NetworkClient.Instance.State = ConnectionState.FullyConnected;
-            SceneManager.LoadScene("LoginScene");
+            SceneChanger.Instance.ChangeScene(AvailableScene.Login);
         }
 
         #endregion

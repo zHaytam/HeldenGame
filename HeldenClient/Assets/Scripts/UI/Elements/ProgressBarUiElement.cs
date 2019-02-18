@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using Assets.Utils.Extensions;
+using Assets.Scripts.Utils.Extensions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,7 +25,7 @@ namespace Assets.Scripts.UI.Elements
         [SerializeField] private float _minValue;
         [SerializeField] private float _maxValue;
         [SerializeField] private float _value;
-        [SerializeField] private bool _showText;
+        [SerializeField] private ProgressBarTextVisibility _textVisibilityVisibility;
 
         [Header("Undetermined Animation")]
         [SerializeField] private float _undeterminedStep = 5f;
@@ -112,15 +112,15 @@ namespace Assets.Scripts.UI.Elements
         /// <summary>
         /// Wheither to show the text (current value / max value) or not.
         /// </summary>
-        public bool ShowText
+        public ProgressBarTextVisibility TextVisibility
         {
-            get => _showText;
+            get => _textVisibilityVisibility;
             set
             {
-                if (_showText == value)
+                if (_textVisibilityVisibility == value)
                     return;
 
-                _showText = value;
+                _textVisibilityVisibility = value;
                 OnOptionChanged();
             }
         }
@@ -145,7 +145,7 @@ namespace Assets.Scripts.UI.Elements
         {
             _fillImage.gameObject.SetActive(!Undetermined);
             _blockImage.gameObject.SetActive(Undetermined);
-            _innerText.gameObject.SetActive(!Undetermined && ShowText);
+            _innerText.gameObject.SetActive(!Undetermined && TextVisibility != ProgressBarTextVisibility.None);
 
             if (Undetermined)
             {
@@ -167,9 +167,19 @@ namespace Assets.Scripts.UI.Elements
             if (!Undetermined)
             {
                 _fillImage.fillAmount = Value / MaxValue;
-                if (ShowText)
+                if (TextVisibility != ProgressBarTextVisibility.None)
                 {
                     _innerText.SetText($"{Value} / {MaxValue}");
+                }
+
+                switch (TextVisibility)
+                {
+                    case ProgressBarTextVisibility.ValueOverMax:
+                        _innerText.SetText($"{Value} / {MaxValue}");
+                        break;
+                    case ProgressBarTextVisibility.Percentage:
+                        _innerText.SetText($"{(Value / MaxValue) * 100}%");
+                        break;
                 }
             }
         }
@@ -199,5 +209,12 @@ namespace Assets.Scripts.UI.Elements
 
         #endregion
 
+    }
+
+    public enum ProgressBarTextVisibility
+    {
+        None,
+        ValueOverMax,
+        Percentage
     }
 }

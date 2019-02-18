@@ -105,7 +105,7 @@ Client (Game):
         is avaible (a.k.a ConnectionScene)..
         The NetworkClient shouldn't be the one handling this.
         ✔ When FullyConnected, switch to the next scene. @done (19-02-18 10:29)
-          ☐ Use SceneChanger.
+          ✔ Use SceneChanger. @done (19-02-18 20:00)
         ☐ When the player has a wrong version, show a blocking popup.
         ✔ Ask the user if he wants to try & reconnect. @done (19-02-13 14:24)
           Instead of trying 3 times to reconnect and blocking the user,

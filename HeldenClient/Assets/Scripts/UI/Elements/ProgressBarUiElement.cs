@@ -167,10 +167,6 @@ namespace Assets.Scripts.UI.Elements
             if (!Undetermined)
             {
                 _fillImage.fillAmount = Value / MaxValue;
-                if (TextVisibility != ProgressBarTextVisibility.None)
-                {
-                    _innerText.SetText($"{Value} / {MaxValue}");
-                }
 
                 switch (TextVisibility)
                 {

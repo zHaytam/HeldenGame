@@ -1,7 +1,7 @@
 Global notes:
   DOCUMENT THE CODE, AT LEAST THE CLASS.
   TEST MORE.
-
+--- ✄ ------------------------ ✄ ------------------------ ✄ ------------------------ ✄ ------------------------ ✄ -----------------------
 Global bugs:
   ✔ both MessagesHandlers.SerializeMessage and Telepathy.Client.Send include the length. @critical @done (19-02-07 11:45)
   ✔ Connect>WrongVersion>Disconnect>Reconnect infinite cycle. @critical @done (19-02-12 13:31)
@@ -18,10 +18,11 @@ Global bugs:
     A Scene Changer will fix the issue for other scenes but not the first one, I'll just add
     an "Entry" scene and use the Scene Changer to go to the ConnectionScene.
   ✘ Somehow NetworkClient's script is null now... @critical @cancelled (19-02-18 19:28)
-  ☐ When the player is disconnected and sent back to ConnectionScene, the dialog that uses I18N doesn't work.
+  ✔ When the player is disconnected and sent back to ConnectionScene, the dialog that uses I18N doesn't work. @critical @done (19-02-19 20:55)
     Turns out I forgot to un-subscribe from the StateChanged event.
     Calling CheckIfDisconnected() in Awake causes it to show the dialog since we're disconnected at first.
-
+    Workaround: Only call CheckIfDisconnected when it's not the first Awake (this means holding a boolean).
+--- ✄ ------------------------ ✄ ------------------------ ✄ ------------------------ ✄ ------------------------ ✄ -----------------------
 Helden.Common:
   ✔ Messages system. @done (19-02-04 19:44)
     Should use reflection to get all possible messages.
@@ -40,7 +41,7 @@ Helden.Common:
     ✔ UnregisterMessage. @done (19-02-07 11:14)
       Used the HashCode of the actions, not sure if this is the best solution.
   ✔ Disconnect reasons. @done (19-02-12 13:32)
-
+--- ✄ ------------------------ ✄ ------------------------ ✄ ------------------------ ✄ ------------------------ ✄ -----------------------
 Tools:
   ✔ Messages creator. @done (19-02-05 21:36)
     This tool should help me create IMessages with the right id.
@@ -55,7 +56,7 @@ Tools:
     ☐ Ability to use "int" instead of having to type "Int32".
     ☐ Handle lists/types/enums.
       In order to handle this in a good way, a UI would be better.
-
+--- ✄ ------------------------ ✄ ------------------------ ✄ ------------------------ ✄ ------------------------ ✄ -----------------------
 Server:
   ✔ Server/Client Wrapper. @done (19-02-05 21:37)
     ✔ Give clients a unique Id. @done (19-02-06 14:33)
@@ -79,7 +80,7 @@ Server:
   ✔ Setup Database. @done (19-02-17 18:07)
     Only work with migrations!
     ✔ Users. @done (19-02-17 18:07)
-
+--- ✄ ------------------------ ✄ ------------------------ ✄ ------------------------ ✄ ------------------------ ✄ -----------------------
 Client (Game):
   ✔ Test some networking libraries. @done (19-02-05 21:37)
     Ended up using Telepathy.

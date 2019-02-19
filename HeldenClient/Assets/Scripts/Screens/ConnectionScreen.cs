@@ -20,6 +20,7 @@ namespace Assets.Scripts.Screens
         #region Fields
 
         [SerializeField] private TextMeshProUGUI _stateText;
+        private static bool _firstCall = true; // Workaround for X
 
         #endregion
 
@@ -36,7 +37,14 @@ namespace Assets.Scripts.Screens
 
             // When the scene changes to ConnectionScene,
             // we might already be disconnected.
-            CheckIfDisconnected();
+            if (_firstCall)
+            {
+                _firstCall = false;
+            }
+            else
+            {
+                CheckIfDisconnected();
+            }
         }
 
         private void OnDisable()

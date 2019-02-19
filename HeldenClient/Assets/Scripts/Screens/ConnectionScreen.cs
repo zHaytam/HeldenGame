@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Dialogs;
+﻿using System.Runtime.CompilerServices;
+using Assets.Scripts.Dialogs;
 using Assets.Scripts.I18n;
 using Assets.Scripts.Scenes;
 using Helden.Common.Network.Protocol.Dispatcher;
@@ -35,7 +36,7 @@ namespace Assets.Scripts.Screens
 
             // When the scene changes to ConnectionScene,
             // we might already be disconnected.
-            // CheckIfDisconnected();
+            CheckIfDisconnected();
         }
 
         private void OnDisable()
@@ -44,6 +45,7 @@ namespace Assets.Scripts.Screens
             if (NetworkClient.Instance == null)
                 return;
 
+            NetworkClient.Instance.StateChanged -= NetworkClient_StateChanged;
             NetworkClient.Instance.Dispatcher.UnregisterMessage<HelloMessage>(HandleHelloMessage);
             NetworkClient.Instance.Dispatcher.UnregisterMessage<WrongClientVersionMessage>(
                 HandleWrongClientVersionMessage);
@@ -64,8 +66,9 @@ namespace Assets.Scripts.Screens
 
         #region Private Methods
 
-        private static void CheckIfDisconnected()
+        private static void CheckIfDisconnected([CallerMemberName] string caller = null)
         {
+            Debug.Log($"{caller} -- {NetworkClient.Instance.State}");
             if (NetworkClient.Instance.State != ConnectionState.Disconnected)
                 return;
 

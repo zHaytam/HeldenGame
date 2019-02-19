@@ -57,6 +57,7 @@ namespace Assets.Scripts.Scenes
 
             // Load I18N sentences
             yield return StartCoroutine(I18NManager.Instance.ReloadSentences($"{newScene}Scene"));
+            Debug.Log("Loaded I18N sentences.");
 
             // Load scene (de-activated)
             var operation = SceneManager.LoadSceneAsync($"{newScene}Scene");

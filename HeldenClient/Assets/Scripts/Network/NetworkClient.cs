@@ -1,5 +1,6 @@
 ﻿using System;
 using Assets.Scripts.Handlers;
+using Assets.Scripts.Scenes;
 using Helden.Common.Network.Protocol;
 using Helden.Common.Network.Protocol.Dispatcher;
 using Helden.Common.Network.Protocol.Messages;
@@ -150,8 +151,10 @@ namespace Assets.Scripts
             HandlersManager.Clean();
             State = ConnectionState.Disconnected;
 
-            if (SceneManager.GetActiveScene().name != "ConnectionScene")
-                SceneManager.LoadScene("ConnectionScene");
+            if (SceneChanger.Instance.CurrentScene != AvailableScene.Connection)
+            {
+                SceneChanger.Instance.ChangeScene(AvailableScene.Connection);
+            }
         }
 
         private void OnStateChanged()

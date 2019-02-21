@@ -4,6 +4,7 @@
     {
         Entry,
         Connection,
-        Login
+        Login,
+        Registration
     }
 }

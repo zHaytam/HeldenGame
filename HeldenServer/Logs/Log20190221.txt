@@ -1,0 +1,14 @@
+2019-02-21 13:23:39.955 +01:00 [INF] Configuration loaded.
+2019-02-21 13:23:40.260 +01:00 [INF] 7 messages loaded.
+2019-02-21 13:23:40.261 +01:00 [INF] 1 handlers loaded.
+2019-02-21 13:23:40.261 +01:00 [DBG] Starting server...
+2019-02-21 13:23:40.297 +01:00 [INF] Server started at port 8654.
+2019-02-21 13:23:45.858 +01:00 [INF] Configuration loaded.
+2019-02-21 13:23:45.919 +01:00 [INF] 7 messages loaded.
+2019-02-21 13:23:45.920 +01:00 [INF] 1 handlers loaded.
+2019-02-21 13:23:45.921 +01:00 [DBG] Starting server...
+2019-02-21 13:23:45.940 +01:00 [INF] Server started at port 8654.
+2019-02-21 13:23:57.123 +01:00 [INF] Client N°1 is now being managed.
+2019-02-21 13:23:57.176 +01:00 [DBG] Received ClientVersionMessage from Client N°1.
+2019-02-21 13:23:57.186 +01:00 [DBG] Client N°1 has version 0.1.
+2019-02-21 13:24:08.447 +01:00 [INF] Client N°1 removed.

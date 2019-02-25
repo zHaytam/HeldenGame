@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Assets.Scripts.UI.Validation;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,7 +11,11 @@ namespace Assets.Scripts.Screens
         #region Fields
 
         [SerializeField] private TMP_InputField _emailInput;
+        [SerializeField] private TMP_InputField _confirmEmailInput;
+        [SerializeField] private TMP_InputField _passwordInput;
+        [SerializeField] private TMP_InputField _confirmPasswordInput;
         [SerializeField] private Button _registerBtn;
+        [SerializeField] private GameObject _errorLabelPrefab;
 
         #endregion
 
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Screens
 
         private void RegisterBtnClicked()
         {
-            Debug.Log(_emailInput.text);
+            // Debug.Log(_emailInput.text);
         }
 
         private void OnDestroy()
